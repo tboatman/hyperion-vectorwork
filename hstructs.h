@@ -532,18 +532,21 @@ struct REGS {                           /* Processor registers       */
 
         const INSTR_FUNC    *s370_runtime_opcode_xxxx,
                             *s370_runtime_opcode_e3________xx,
+                            *s370_runtime_opcode_e7________xx,
                             *s370_runtime_opcode_eb________xx,
                             *s370_runtime_opcode_ec________xx,
                             *s370_runtime_opcode_ed________xx;
 
         const INSTR_FUNC    *s390_runtime_opcode_xxxx,
                             *s390_runtime_opcode_e3________xx,
+                            *s390_runtime_opcode_e7________xx,
                             *s390_runtime_opcode_eb________xx,
                             *s390_runtime_opcode_ec________xx,
                             *s390_runtime_opcode_ed________xx;
 
         const INSTR_FUNC    *z900_runtime_opcode_xxxx,
                             *z900_runtime_opcode_e3________xx,
+                            *z900_runtime_opcode_e7________xx,
                             *z900_runtime_opcode_eb________xx,
                             *z900_runtime_opcode_ec________xx,
                             *z900_runtime_opcode_ed________xx;
@@ -1900,6 +1903,10 @@ struct DEVBLK {                         /* Device configuration block*/
 #define QTYPE_READ   1
 #define QTYPE_WRITE  2
 #define QTYPE_DATA   3
+
+#if defined( _FEATURE_129_ZVECTOR_FACILITY)
+       VR      vr[32];                 /* zVector registers         */
+#endif
 
 #if defined( OPTION_E7_PREFIX )
 
